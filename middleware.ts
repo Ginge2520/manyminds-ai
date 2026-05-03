@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { readSessionToken, sessionCookieName } from "./lib/session";
 
-const protectedPrefixes = ["/dashboard", "/account"];
+const protectedPrefixes = ["/dashboard", "/account", "/agent-test"];
 const onboardingSafe = ["/onboarding", "/api/onboarding"];
 
 export async function middleware(request: NextRequest) {
@@ -25,5 +25,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/account/:path*", "/onboarding", "/login"],
+  matcher: ["/dashboard/:path*", "/account/:path*", "/agent-test/:path*", "/onboarding", "/login"],
 };
