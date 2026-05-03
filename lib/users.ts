@@ -33,7 +33,7 @@ export async function createUser(input: {
     plan: "free",
     usageThisMonth: 0,
     usageResetDate: nextUsageResetDate(),
-    onboarded: false,
+    onboarded: true,
     createdAt: new Date().toISOString(),
     passwordHash: await bcrypt.hash(input.password, 12),
   };

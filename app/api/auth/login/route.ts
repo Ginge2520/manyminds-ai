@@ -16,5 +16,5 @@ export async function POST(request: Request) {
     redirect("/login?error=invalid_credentials");
   }
   await setSessionCookie(toSessionUser(user));
-  redirect(user.onboarded ? "/dashboard" : "/onboarding");
+  redirect("/dashboard");
 }

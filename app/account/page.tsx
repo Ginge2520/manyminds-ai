@@ -10,11 +10,11 @@ export default async function AccountPage() {
   const safeUser =
     user ||
     ({
-      id: "demo",
-      name: "Demo Founder",
-      email: "demo@manyminds.ai",
+      id: session?.id || "local-user",
+      name: session?.name || "ManyMinds User",
+      email: session?.email || "local@manyminds.ai",
       plan: "free",
-      usageThisMonth: 3,
+      usageThisMonth: 0,
       usageResetDate: new Date().toISOString(),
       onboarded: true,
       createdAt: new Date().toISOString(),

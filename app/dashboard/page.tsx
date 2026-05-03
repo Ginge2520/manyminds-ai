@@ -16,17 +16,17 @@ export default async function DashboardPage({
   const safeUser =
     user ||
     ({
-      id: "demo",
-      name: "Demo Founder",
-      email: "demo@manyminds.ai",
+      id: session?.id || "local-user",
+      name: session?.name || "ManyMinds User",
+      email: session?.email || "local@manyminds.ai",
       plan: "free",
-      usageThisMonth: 10,
+      usageThisMonth: 0,
       usageResetDate: new Date().toISOString(),
       onboarded: true,
       createdAt: new Date().toISOString(),
     } as const);
   const plan = getPlan(safeUser.plan);
-  const overFreeLimit = query.limit || (safeUser.plan === "free" && safeUser.usageThisMonth >= 10);
+  const overFreeLimit = Boolean(query.limit) || (safeUser.plan === "free" && safeUser.usageThisMonth >= 10);
 
   return (
     <DashboardChrome>

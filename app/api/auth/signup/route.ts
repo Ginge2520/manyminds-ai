@@ -21,5 +21,5 @@ export async function POST(request: Request) {
   const data = signupSchema.parse(form);
   const user = await createUser(data);
   await setSessionCookie(toSessionUser(user));
-  redirect("/onboarding");
+  redirect("/dashboard");
 }
