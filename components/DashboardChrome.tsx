@@ -10,8 +10,7 @@ export function DashboardChrome({ children }: { children: ReactNode }) {
           <Logo compact />
           <nav className="flex flex-wrap items-center gap-2 text-sm font-bold text-slate-300">
             <Link className="rounded-full px-3 py-2 hover:bg-white/10" href="/dashboard">Dashboard</Link>
-            <Link className="rounded-full px-3 py-2 hover:bg-white/10" href="/pricing">Pricing</Link>
-            <Link className="rounded-full px-3 py-2 hover:bg-white/10" href="/account/billing">Account</Link>
+            <Link className="rounded-full px-3 py-2 hover:bg-white/10" href="/account">Account</Link>
             <Link className="rounded-full bg-white px-3 py-2 text-slate-950" href="/api/auth/logout">Log out</Link>
           </nav>
         </div>

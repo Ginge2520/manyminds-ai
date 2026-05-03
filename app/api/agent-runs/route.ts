@@ -26,11 +26,11 @@ export async function POST(request: Request) {
       {
         ok: false,
         reason: gate.reason,
-        upgradeModal: {
-          title: "Your AI team has reached its free limit",
-          text: "Upgrade to unlock more agent runs, Debate Mode, and the full ManyMinds AI team.",
-          primary: "Upgrade to Pro",
-          secondary: "View all plans",
+        limitModal: {
+          title: "Your AI team has used this month's free runs",
+          text: "Free accounts currently include 10 agent runs each month while we test the product with early users.",
+          primary: "View account",
+          secondary: "Close",
         },
       },
       { status: 402 }

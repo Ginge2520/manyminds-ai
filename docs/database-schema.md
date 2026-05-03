@@ -13,8 +13,6 @@ Recommended production tables:
 | email | string | Unique, lowercase |
 | passwordHash | string | Omit if using OAuth-only auth |
 | plan | enum | `free`, `starter`, `pro`, `power`, `enterprise` |
-| stripeCustomerId | string/null | Stripe customer reference |
-| stripeSubscriptionId | string/null | Active subscription reference |
 | usageThisMonth | integer | Monthly agent run count |
 | usageResetDate | datetime | Next usage reset date |
 | onboarded | boolean | Redirect new users to onboarding until true |
@@ -33,3 +31,5 @@ Recommended production tables:
 | createdAt | datetime | Run creation time |
 
 Monthly usage can be reset with a scheduled job that sets `usageThisMonth` to `0` when `usageResetDate` is reached and then advances `usageResetDate` to the first day of the next month.
+
+Future paid account fields can be added later when paid tiers return.

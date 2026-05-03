@@ -5,8 +5,6 @@ export interface User {
   name: string;
   email: string;
   plan: PlanId;
-  stripeCustomerId: string | null;
-  stripeSubscriptionId: string | null;
   usageThisMonth: number;
   usageResetDate: string;
   onboarded: boolean;

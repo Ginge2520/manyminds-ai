@@ -31,8 +31,6 @@ export async function createUser(input: {
     name: input.name.trim(),
     email,
     plan: "free",
-    stripeCustomerId: null,
-    stripeSubscriptionId: null,
     usageThisMonth: 0,
     usageResetDate: nextUsageResetDate(),
     onboarded: false,
@@ -63,15 +61,6 @@ export function markUserOnboarded(id: string) {
   const user = users.get(id);
   if (!user) return null;
   user.onboarded = true;
-  return publicUser(user);
-}
-
-export function updateUserPlan(id: string, plan: User["plan"], stripe?: Partial<User>) {
-  const user = users.get(id);
-  if (!user) return null;
-  user.plan = plan;
-  user.stripeCustomerId = stripe?.stripeCustomerId ?? user.stripeCustomerId;
-  user.stripeSubscriptionId = stripe?.stripeSubscriptionId ?? user.stripeSubscriptionId;
   return publicUser(user);
 }
 
