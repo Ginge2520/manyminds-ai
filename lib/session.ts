@@ -19,7 +19,7 @@ export function toSessionUser(user: User): SessionUser {
 }
 
 export async function createSessionToken(user: SessionUser) {
-  return new SignJWT(user)
+  return new SignJWT({ ...user })
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
     .setExpirationTime("7d")
