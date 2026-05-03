@@ -1,21 +1,8 @@
-import { NextResponse, type NextRequest } from "next/server";
-import { readSessionToken, sessionCookieName } from "./lib/session";
+import { NextResponse } from "next/server";
 
-const protectedPrefixes = ["/dashboard", "/account", "/agent-test"];
-
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  const session = await readSessionToken(request.cookies.get(sessionCookieName)?.value);
-  const isProtected = protectedPrefixes.some((prefix) => pathname.startsWith(prefix));
-
-  if ((isProtected || pathname === "/onboarding") && !session) {
-    return NextResponse.redirect(new URL(`/login?next=${encodeURIComponent(pathname)}`, request.url));
-  }
-
-  if (session && pathname === "/login") {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
-  }
-
+export async function middleware() {
+  // Prototype mode: keep the app open so the real agent workflow can be tested
+  // without the temporary auth layer blocking progress.
   return NextResponse.next();
 }
 

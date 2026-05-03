@@ -1,10 +1,23 @@
 import Link from "next/link";
 import { AuthShell } from "@/components/AuthShell";
 
-export default function SignupPage() {
+export default async function SignupPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const query = await searchParams;
+
   return (
     <AuthShell title="Create your account" subtitle="Start on Free. No card needed, no sales ambush hiding behind a fern.">
       <form className="grid gap-4" action="/api/auth/signup" method="post">
+        {query.error && (
+          <div className="rounded-2xl border border-amber-300/25 bg-amber-300/10 p-4 text-sm font-bold text-amber-100">
+            {query.error === "account_exists"
+              ? "An account already exists for that email. Log in instead, or use a different email."
+              : "Please check the sign-up details and try again. Passwords need at least 8 characters and must match."}
+          </div>
+        )}
         <label className="field">
           <span className="field-label">Name</span>
           <input className="field-input" name="name" autoComplete="name" required />

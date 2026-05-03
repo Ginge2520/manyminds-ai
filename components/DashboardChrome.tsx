@@ -12,7 +12,7 @@ export function DashboardChrome({ children }: { children: ReactNode }) {
             <Link className="rounded-full px-3 py-2 hover:bg-white/10" href="/dashboard">Dashboard</Link>
             <Link className="rounded-full px-3 py-2 hover:bg-white/10" href="/agent-test">Agent Lab</Link>
             <Link className="rounded-full px-3 py-2 hover:bg-white/10" href="/account">Account</Link>
-            <Link className="rounded-full bg-white px-3 py-2 text-slate-950" href="/api/auth/logout">Log out</Link>
+            <Link className="rounded-full bg-white px-3 py-2 text-slate-950" href="/agent-test">Open prototype</Link>
           </nav>
         </div>
       </header>

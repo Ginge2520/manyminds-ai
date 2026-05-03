@@ -1,10 +1,21 @@
 import Link from "next/link";
 import { AuthShell } from "@/components/AuthShell";
 
-export default function LoginPage() {
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const query = await searchParams;
+
   return (
     <AuthShell title="Welcome back" subtitle="Log in to your AI product room. The agents have been pretending not to wait.">
       <form className="grid gap-4" action="/api/auth/login" method="post">
+        {query.error === "invalid_credentials" && (
+          <div className="rounded-2xl border border-red-400/25 bg-red-500/10 p-4 text-sm font-bold text-red-100">
+            Those login details did not match an account. Try again or create a new free account.
+          </div>
+        )}
         <label className="field">
           <span className="field-label">Email</span>
           <input className="field-input" name="email" type="email" autoComplete="email" required />
