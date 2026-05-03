@@ -1,2 +1,6 @@
 .DS_Store
 deploy/
+node_modules/
+.next/
+.env
+.env.local
