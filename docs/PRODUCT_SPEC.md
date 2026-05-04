@@ -29,6 +29,14 @@ NEXT_PUBLIC_PROTOTYPE_UNLOCK_ALL=true
 
 Restrictions should be reinstated before public release.
 
+Public site lock:
+
+```env
+PUBLIC_SITE_UNLOCKED=false
+```
+
+When `PUBLIC_SITE_UNLOCKED` is not `true`, hosted non-local traffic should be rewritten to `/coming-soon`. Localhost remains open so development can continue without exposing the work-in-progress app on `www.manymindsai.com`.
+
 ## Current Stack
 
 - Next.js
@@ -43,6 +51,7 @@ Restrictions should be reinstated before public release.
 ## Key Routes
 
 - `/` main landing or app entry route
+- `/coming-soon` public holding page while the hosted site is locked
 - `/agent-test` current Agent Lab testing workspace
 - `/dashboard` dashboard shell
 - `/account` account page
