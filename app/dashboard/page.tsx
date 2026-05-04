@@ -4,6 +4,7 @@ import { UsageMeter } from "@/components/UsageMeter";
 import { currentUser } from "@/lib/auth";
 import { getPlan } from "@/lib/plans";
 import { getUserById } from "@/lib/users";
+import Link from "next/link";
 
 export default async function DashboardPage({
   searchParams,
@@ -34,23 +35,27 @@ export default async function DashboardPage({
       <section className="grid gap-6 lg:grid-cols-[1fr_360px]">
         <div className="space-y-6">
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.055] p-7">
-            <p className="text-sm font-black uppercase tracking-[0.18em] text-aqua">Your AI product team</p>
-            <h1 className="mt-3 text-4xl font-black text-white">Agents that collaborate, debate, and build.</h1>
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-aqua">Start here</p>
+            <h1 className="mt-3 text-4xl font-black text-white">Open Agent Lab and give the team a task.</h1>
             <p className="mt-3 max-w-2xl leading-7 text-slate-300">
-              Current access: <strong className="text-white">{plan.name}</strong>. Early users get a simple free account while
-              we test the core experience.
+              Agent Lab is the main workspace for this prototype. Choose your AI team, pick a mode, then watch them collaborate in a live chat.
+              Current access: <strong className="text-white"> {plan.name}</strong>.
             </p>
-            <form action="/api/agent-runs" method="post" className="mt-6 flex flex-wrap gap-3">
-              <input type="hidden" name="agentsRequested" value="3" />
-              <button className="primary-cta" type="submit">Run agent team</button>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link className="primary-cta" href="/agent-test">Open Agent Lab</Link>
+              <Link className="secondary-cta" href="/account">View account</Link>
               <FreeLimitModal />
-            </form>
+            </div>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
-            {["Product brief", "MVP roadmap", "Competitor scan"].map((item) => (
+            {[
+              ["Pick a team", "Choose the agents that fit the job."],
+              ["Choose a mode", "Build fast, debate a decision, or go deeper."],
+              ["Send a task", "Watch the team work in the chat."],
+            ].map(([item, description]) => (
               <article key={item} className="rounded-3xl border border-white/10 bg-white/[0.055] p-5">
                 <h3 className="text-lg font-black text-white">{item}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">Ready for agent collaboration, debate, and export.</p>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{description}</p>
               </article>
             ))}
           </div>
@@ -60,7 +65,7 @@ export default async function DashboardPage({
           <div className="rounded-3xl border border-white/10 bg-white/[0.055] p-5">
             <h2 className="text-xl font-black text-white">Free account controls</h2>
             <p className="mt-2 text-sm leading-6 text-slate-400">
-              Free accounts pause when monthly test usage is reached. Paid tiers are intentionally switched off for now.
+              Prototype access is currently open while the core agent experience is being tested. Plan limits will return closer to release.
             </p>
           </div>
         </aside>
